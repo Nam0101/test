@@ -18,7 +18,11 @@ public class Ultils {
         warning.setContentText(contentText);
         warning.showAndWait();
     }
-    public static void convertDate(String date){
+
+    public Ultils() {
+    }
+
+    public static void convertDate(String date) {
         String[] dateSplit = date.split("-");
         String newDate = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
         System.out.println(newDate);

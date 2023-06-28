@@ -3,6 +3,8 @@ package itss.group14.timekeeper.controllers;
 import itss.group14.timekeeper.contrains.FXMLconstrains;
 import itss.group14.timekeeper.dbservices.EmployeeService;
 import itss.group14.timekeeper.dbservices.RequestService;
+import itss.group14.timekeeper.dbservices.dbconection.AbstractSQLConnection;
+import itss.group14.timekeeper.dbservices.dbconection.SqliteConnection;
 import itss.group14.timekeeper.model.Request;
 import itss.group14.timekeeper.ultis.ViewChangeUltils;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,7 +25,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -32,6 +33,7 @@ import java.util.ResourceBundle;
 public class DanhSachYCController implements Initializable {
     private final ViewChangeUltils viewChangeUltils = new ViewChangeUltils();
     private final ObservableList<Request> requests = FXCollections.observableArrayList();
+    private Connection connection;
     @FXML
     public Button backButton;
     @FXML
@@ -49,25 +51,20 @@ public class DanhSachYCController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Connection connection = null;
+        AbstractSQLConnection sqliteConnection = new SqliteConnection();
         try {
-            // Open the database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:timekeeperdb.sqlite");
-
-            // Create sample data
+            sqliteConnection.connect();
+            connection = sqliteConnection.getConnection();
             ResultSet res = RequestService.getAllRequests(connection);
             while (res.next()) {
-                // get employee by id
                 ResultSet employeeRes = EmployeeService.getEmployeeById(connection, res.getString("employeeid"));
                 requests.add(new Request(employeeRes.getString("id"), employeeRes.getString("name"), employeeRes.getString("department"), res.getString("date"), res.getString("status"), res.getString("reason")));
             }
 
             requests.sort(Comparator.comparing(Request::getStatus, Comparator.comparingInt(this::getStatusPriority)));
 
-            // Set the items of the table
             yctable.setItems(requests);
 
-            // Get the columns of the table
             TableColumn<Request, String> maNVCol = (TableColumn<Request, String>) yctable.getColumns().get(0);
             TableColumn<Request, String> tenNVCol = (TableColumn<Request, String>) yctable.getColumns().get(1);
             TableColumn<Request, String> boPhanCol = (TableColumn<Request, String>) yctable.getColumns().get(2);
@@ -75,7 +72,6 @@ public class DanhSachYCController implements Initializable {
             TableColumn<Request, String> trangThaiCol = (TableColumn<Request, String>) yctable.getColumns().get(4);
             TableColumn<Request, String> lyDoCol = (TableColumn<Request, String>) yctable.getColumns().get(5);
 
-            // Set the cell value factories for each column
             maNVCol.setCellValueFactory(features -> new SimpleStringProperty(features.getValue().getEmployee().getId()));
             tenNVCol.setCellValueFactory(features -> new SimpleStringProperty(features.getValue().getEmployee().getName()));
             boPhanCol.setCellValueFactory(features -> new SimpleStringProperty(features.getValue().getEmployee().getDepartment()));
@@ -83,10 +79,11 @@ public class DanhSachYCController implements Initializable {
             trangThaiCol.setCellValueFactory(features -> new SimpleStringProperty(features.getValue().getStatus()));
             lyDoCol.setCellValueFactory(features -> new SimpleStringProperty(features.getValue().getReason()));
 
-            // Add double-click event to show detail
             yctable.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2) {
                     Request selectedRequest = yctable.getSelectionModel().getSelectedItem();
+                    if (selectedRequest == null) return;
+
                     try {
                         showDetail(event, selectedRequest);
                     } catch (Exception e) {
@@ -97,12 +94,11 @@ public class DanhSachYCController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            // Close the connection
             if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    // Handle the exception if unable to close the connection
+                    throw new RuntimeException(e);
                 }
             }
         }
@@ -126,6 +122,5 @@ public class DanhSachYCController implements Initializable {
         stage.show();
 
     }
-
 
 }

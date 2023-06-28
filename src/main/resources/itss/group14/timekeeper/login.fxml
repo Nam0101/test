@@ -13,7 +13,8 @@
     <children>
         <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FAFAD2;">
             <children>
-                <Label layoutX="209.0" layoutY="121.0" text="Wellcome Back Admin!" textFill="#320303">
+                <Label layoutX="126.0" layoutY="121.0" text="Chào mừng đến với hệ thống quản lý chấm công!"
+                       textFill="#320303">
                     <font>
                         <Font size="18.0"/>
                     </font>

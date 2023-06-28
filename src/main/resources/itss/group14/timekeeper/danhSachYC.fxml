@@ -4,9 +4,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="400.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-            fx:controller="itss.group14.timekeeper.controllers.DanhSachYCController">
+            fx:controller="itss.group14.timekeeper.controllers.DanhSachYCController"
+            style="-fx-background-color: #FAFAD2;">
     <children>
         <Button fx:id="backButton" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#backclick"
                 style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 60px; -fx-pref-height: 30px;"

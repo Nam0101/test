@@ -9,17 +9,13 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
 public class AdminHomeController implements Initializable {
     private static final Preferences pref = Preferences.userRoot();
-    private static final String role = pref.get("role", "");
     private static final String name = pref.get("username", "");
-    private final Connection connection = DriverManager.getConnection("jdbc:sqlite:timekeeperdb.sqlite");
     private final ViewChangeUltils viewChangeUltils = new ViewChangeUltils();
     @FXML
     public Button exportInforButton;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.group14.timekeeper.controllers.SuaThongTinOfficerController">
+    <children>
+        <Label layoutX="40.0" layoutY="176.0" prefHeight="25.0" prefWidth="117.0" text="Sáng" />
+        <CheckBox fx:id="checkBoxSang" layoutX="171.0" layoutY="176.0" prefHeight="25.0" prefWidth="111.0" />
+
+        <Label layoutX="40.0" layoutY="219.0" prefHeight="25.0" prefWidth="117.0" text="Chiều" />
+        <CheckBox fx:id="checkBoxChieu" layoutX="171.0" layoutY="219.0" prefHeight="25.0" prefWidth="111.0" />
+        <Button fx:id="sentButton" layoutX="519.0" layoutY="349.0" mnemonicParsing="false" onAction="#suaTT" prefHeight="25.0" prefWidth="48.0" text="Sửa" />
+        <ImageView fitHeight="25.0" fitWidth="36.0" layoutX="557.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+        <Label layoutX="40.0" layoutY="38.0" prefHeight="25.0" prefWidth="111.0" text="Họ và tên:" />
+        <Label layoutX="40.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0" text="Mã nhân viên:" />
+        <Label fx:id="maNV" layoutX="171.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0" text="20205106" />
+        <Label fx:id="tenNV" layoutX="171.0" layoutY="38.0" prefHeight="25.0" prefWidth="111.0" text="Nguyễn Văn Nam" />
+        <Label layoutX="40.0" layoutY="135.0" prefHeight="25.0" prefWidth="117.0" text="Ngày-Tháng-Năm:" />
+        <Label fx:id="NgaySua" layoutX="171.0" layoutY="135.0" prefHeight="25.0" prefWidth="111.0" text="01/01/2002" />
+
+        <Label layoutX="40.0" layoutY="176.0" prefHeight="25.0" prefWidth="117.0" text="Sáng" />
+        <TextField fx:id="suaCa1" layoutX="171.0" layoutY="304.0" prefHeight="25.0" prefWidth="111.0" />
+
+        <Label layoutX="40.0" layoutY="219.0" prefHeight="25.0" prefWidth="117.0" text="Chiều" />
+
+        <Label layoutX="40.0" layoutY="261.0" prefHeight="25.0" prefWidth="117.0" text="Đi muộn" />
+        <TextField fx:id="suaCa2" layoutX="171.0" layoutY="261.0" prefHeight="25.0" prefWidth="111.0" />
+
+        <Button fx:id="BackButton" layoutY="2.0" mnemonicParsing="false" onAction="#backAction" text="Back" />
+        <TextField layoutX="363.0" layoutY="67.0" prefHeight="187.0" prefWidth="183.0" />
+        <Label layoutX="408.0" layoutY="267.0" prefHeight="25.0" prefWidth="111.0" text="Ghi chú" />
+        <Label layoutX="40.0" layoutY="304.0" prefHeight="25.0" prefWidth="117.0" text="Về sớm" />
+      <Label layoutX="40.0" layoutY="101.0" prefHeight="25.0" prefWidth="111.0" text="Bộ phận:" />
+      <Label fx:id="bophan" layoutX="165.0" layoutY="101.0" prefHeight="25.0" prefWidth="111.0" text="Phòng ban" />
+    </children>
+</Pane>

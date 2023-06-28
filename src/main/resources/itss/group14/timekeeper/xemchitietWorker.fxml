@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19">
+   <children>
+      <Button layoutX="455.0" layoutY="347.0" mnemonicParsing="false" text="Yêu cầu chỉnh sửa"/>
+      <TextField layoutY="2.0" text="Phần Mềm Chấm Công"/>
+      <DatePicker layoutX="320.0" layoutY="137.0" prefHeight="133.0" prefWidth="247.0"/>
+      <ImageView fitHeight="25.0" fitWidth="36.0" layoutX="557.0" layoutY="2.0" pickOnBounds="true"
+                 preserveRatio="true"/>
+      <TextField layoutX="40.0" layoutY="120.0" prefHeight="25.0" prefWidth="111.0" text="Giờ bắt đầu: "/>
+      <TextField layoutX="171.0" layoutY="120.0" prefHeight="25.0" prefWidth="111.0"/>
+      <TextField layoutX="40.0" layoutY="155.0" prefHeight="25.0" prefWidth="111.0" text="Giờ kết thúc:"/>
+      <TextField layoutX="171.0" layoutY="155.0" prefHeight="25.0" prefWidth="111.0"/>
+      <TextField layoutX="40.0" layoutY="200.0" prefHeight="25.0" prefWidth="111.0" text="Số giờ làm:"/>
+      <TextField layoutX="40.0" layoutY="243.0" prefHeight="25.0" prefWidth="111.0" text="Số giờ làm thêm:"/>
+      <TextField layoutX="171.0" layoutY="200.0" prefHeight="25.0" prefWidth="111.0"/>
+      <TextField layoutX="171.0" layoutY="243.0" prefHeight="25.0" prefWidth="111.0"/>
+      <TextField layoutX="118.0" layoutY="294.0" prefHeight="25.0" prefWidth="163.0" text="Tổng số giờ làm việc :"/>
+      <TextField layoutX="118.0" layoutY="335.0" prefHeight="25.0" prefWidth="163.0" text="Tổng số giờ tăng ca   :"/>
+      <TextField layoutX="319.0" layoutY="294.0" prefHeight="25.0" prefWidth="98.0"/>
+      <TextField layoutX="319.0" layoutY="335.0" prefHeight="25.0" prefWidth="98.0"/>
+      <TextField layoutX="444.0" layoutY="107.0" prefHeight="25.0" prefWidth="122.0" text="Tháng x Năm y"/>
+      <TextField layoutX="40.0" layoutY="38.0" prefHeight="25.0" prefWidth="111.0" text="Họ và tên:"/>
+      <TextField layoutX="40.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0" text="Mã nhân viên:"/>
+      <TextField layoutX="171.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0"/>
+      <TextField layoutX="171.0" layoutY="38.0" prefHeight="25.0" prefWidth="111.0"/>
+      <TextField layoutX="323.0" layoutY="76.0" prefHeight="25.0" prefWidth="64.0" text="Đơn vi: "/>
+      <ImageView fitHeight="66.0" fitWidth="77.0" layoutX="519.0" layoutY="5.0" pickOnBounds="true"
+                 preserveRatio="true"/>
+      <TextField layoutX="323.0" layoutY="38.0" prefHeight="25.0" prefWidth="64.0" text="Chức vụ: "/>
+      <TextField layoutX="417.0" layoutY="38.0" prefHeight="25.0" prefWidth="98.0"/>
+      <TextField layoutX="417.0" layoutY="76.0" prefHeight="25.0" prefWidth="98.0"/>
+      <Button layoutX="49.0" layoutY="294.0" mnemonicParsing="false" text="Tháng"/>
+      <Button layoutX="50.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Năm"/>
+      <Button layoutX="49.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Quý"/>
+   </children>
+</Pane>
