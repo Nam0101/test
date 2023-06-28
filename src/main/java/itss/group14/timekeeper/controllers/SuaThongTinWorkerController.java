@@ -35,7 +35,7 @@ public class SuaThongTinWorkerController implements Initializable {
     public TextField suaCa3;
     public Button BackButton;
     private WorkerAttendanceRecord workerAttendanceRecord;
-    ;
+
     private Connection connection;
     private Request selectedRequest;
 

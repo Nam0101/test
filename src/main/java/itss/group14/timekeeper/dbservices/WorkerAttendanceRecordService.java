@@ -1,5 +1,7 @@
 package itss.group14.timekeeper.dbservices;
 
+import itss.group14.timekeeper.model.record.WorkerAttendanceRecord;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,14 +24,14 @@ public class WorkerAttendanceRecordService {
         return statement.executeQuery();
     }
 
-    public static void updateWorkerAttendanceRecordByEmployeeIdDate(Connection connection, String employeeId, String date, double shift1Hours, double shift2Hours, double shift3Hours) throws SQLException {
+    public static void updateWorkerAttendanceRecordByEmployeeIdDate(Connection connection, WorkerAttendanceRecord workerAttendanceRecord) throws SQLException {
         String query = "UPDATE WorkerAttendanceRecord SET shift1Hours = ?, shift2Hours = ?, shift3Hours = ? WHERE employee_id  = ? AND date = ?";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setDouble(1, shift1Hours);
-        statement.setDouble(2, shift2Hours);
-        statement.setDouble(3, shift3Hours);
-        statement.setString(4, employeeId);
-        statement.setString(5, date);
+        statement.setDouble(1, workerAttendanceRecord.getShift1Hours());
+        statement.setDouble(2, workerAttendanceRecord.getShift2Hours());
+        statement.setDouble(3, workerAttendanceRecord.getShift3Hours());
+        statement.setString(4, workerAttendanceRecord.getEmployeeId());
+        statement.setString(5, workerAttendanceRecord.getDate());
         statement.executeUpdate();
     }
 }

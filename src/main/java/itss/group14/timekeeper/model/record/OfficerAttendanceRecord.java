@@ -15,5 +15,19 @@ public class OfficerAttendanceRecord extends AttendanceRecord {
         this.hoursEarlyLeave = hoursEarlyLeave;
     }
 
+    public boolean isMorningSession() {
+        return morningSession;
+    }
 
+    public boolean isAfternoonSession() {
+        return afternoonSession;
+    }
+
+    public double getHoursLate() {
+        return hoursLate;
+    }
+
+    public double getHoursEarlyLeave() {
+        return hoursEarlyLeave;
+    }
 }

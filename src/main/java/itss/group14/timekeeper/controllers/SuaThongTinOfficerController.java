@@ -1,17 +1,18 @@
 package itss.group14.timekeeper.controllers;
 
 import itss.group14.timekeeper.contrains.FXMLconstrains;
+import itss.group14.timekeeper.dbservices.OfficerAttendanceRecordService;
+import itss.group14.timekeeper.dbservices.RequestService;
 import itss.group14.timekeeper.dbservices.dbconection.AbstractSQLConnection;
 import itss.group14.timekeeper.dbservices.dbconection.SqliteConnection;
+import itss.group14.timekeeper.enums.Status;
 import itss.group14.timekeeper.model.Request;
 import itss.group14.timekeeper.model.record.OfficerAttendanceRecord;
+import itss.group14.timekeeper.ultis.Ultils;
 import itss.group14.timekeeper.ultis.ViewChangeUltils;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -30,6 +31,7 @@ public class SuaThongTinOfficerController implements Initializable {
     public Button BackButton;
     public Label bophan;
     private Request selectedRequest;
+    private Connection connection;
 
     /**
      * Called to initialize a controller after its root element has been
@@ -45,7 +47,7 @@ public class SuaThongTinOfficerController implements Initializable {
         AbstractSQLConnection sqliteConnection = new SqliteConnection();
         try {
             sqliteConnection.connect();
-            Connection connection = sqliteConnection.getConnection();
+            connection = sqliteConnection.getConnection();
         } catch (Exception throwables) {
             throwables.printStackTrace();
         }
@@ -67,7 +69,7 @@ public class SuaThongTinOfficerController implements Initializable {
         this.selectedRequest = selectedRequest;
     }
 
-    public void suaTT(ActionEvent event) {
+    public void suaTT(ActionEvent event) throws Exception {
         String employeeId = maNV.getText();
         String date = NgaySua.getText();
         double dimuon = Double.parseDouble(suaCa1.getText());
@@ -75,5 +77,22 @@ public class SuaThongTinOfficerController implements Initializable {
         boolean sang = checkBoxSang.isSelected();
         boolean chieu = checkBoxChieu.isSelected();
         OfficerAttendanceRecord officerAttendanceRecord = new OfficerAttendanceRecord(employeeId, date, sang, chieu, dimuon, vesom);
+        if(dimuon<0 || vesom<0){
+            Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Số giờ làm không hợp lệ.", "Đóng");
+        }
+        else {
+            try {
+                OfficerAttendanceRecordService.updateOfficerAttendanceRecord(connection, officerAttendanceRecord);
+                if (selectedRequest != null) {
+                    selectedRequest.setStatus(String.valueOf(Status.OK));
+                    RequestService.updateRequestStatus(connection, selectedRequest);
+            }
+            }
+            catch (Exception e){
+                Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Không thể cập nhật dữ liệu.", "Đóng");
+            }
+            Ultils.createDialog(Alert.AlertType.INFORMATION, "Thành công", "Sửa thành công.", "Đóng");
+            viewChangeUltils.changeView(event, FXMLconstrains.danhSachYCFXML);
+        }
     }
 }
