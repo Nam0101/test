@@ -7,21 +7,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="itss.group14.timekeeper.controllers.LoginController">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+           fx:controller="itss.group14.timekeeper.controllers.LoginController">
     <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <Label layoutX="209.0" layoutY="121.0" text="Wellcome Back Admin!" textFill="#320303">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <PasswordField fx:id="passwordField" layoutX="187.0" layoutY="211.0" prefHeight="25.0" prefWidth="227.0" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="277.0" layoutY="260.0" mnemonicParsing="false" text="Login" onAction="#loginClick"/>
-            <TextField fx:id="usernameField" layoutX="187.0" layoutY="163.0" prefHeight="25.0" prefWidth="227.0" promptText="Username" />
-         </children>
+        <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FAFAD2;">
+            <children>
+                <Label layoutX="209.0" layoutY="121.0" text="Wellcome Back Admin!" textFill="#320303">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <PasswordField fx:id="passwordField" layoutX="187.0" layoutY="211.0" prefHeight="25.0" prefWidth="227.0"
+                               promptText="Password"/>
+                <Button fx:id="loginButton" layoutX="277.0" layoutY="260.0" mnemonicParsing="false"
+                        onAction="#loginClick" style="-fx-background-color: #3f4d67;" text="Login"/>
+                <TextField fx:id="usernameField" layoutX="187.0" layoutY="163.0" prefHeight="25.0" prefWidth="227.0"
+                           promptText="Username"/>
+            </children>
       </AnchorPane>
    </children>
 </StackPane>

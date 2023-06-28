@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+            fx:controller="itss.group14.timekeeper.controllers.DanhSachYCController">
+    <children>
+        <Button fx:id="backButton" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#backclick"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 60px; -fx-pref-height: 30px;"
+                text="Back"/>
+        <TableView fx:id="yctable" layoutX="14.0" layoutY="119.0" prefHeight="200.0" prefWidth="692.0">
+            <columns>
+                <TableColumn prefWidth="79.0" style="-fx-alignment: CENTER;" text="Mã NV"/>
+                <TableColumn prefWidth="170.0" style="-fx-alignment: CENTER;" text="Tên NV"/>
+                <TableColumn prefWidth="83.0" style="-fx-alignment: CENTER;" text="Bộ phận"/>
+                <TableColumn prefWidth="151.0" style="-fx-alignment: CENTER;" text="Ngày cần chỉnh sửa"/>
+                <TableColumn prefWidth="105.0" style="-fx-alignment: CENTER;" text="Trạng thái"/>
+                <TableColumn prefWidth="105.0" style="-fx-alignment: CENTER;" text="Lý do"/>
+            </columns>
+        </TableView>
+        <Text layoutX="188.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Danh sách yêu cầu chỉnh sửa thông tin">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Text>
+    </children>
+
+</AnchorPane>

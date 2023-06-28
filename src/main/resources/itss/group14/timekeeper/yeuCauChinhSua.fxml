@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="640.0"
+      xmlns="http://javafx.com/javafx/11.0.14-internal" fx:controller="itss.group14.timekeeper.controllers.YeuCauChinhSuaController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+        <!-- Add a VBox to hold the back button and the existing content -->
+        <VBox prefWidth="640.0">
+          <!-- Add the existing content within a separate VBox -->
+          <VBox spacing="10" style="-fx-padding: 10px;">
+            <Text layoutX="132.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0"/>
+            <Button mnemonicParsing="false" text="Back" onAction="#backclick"/>
+            <AnchorPane layoutX="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                        minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0">
+              <children>
+                <Label layoutX="25.0" layoutY="65.0" prefHeight="30.0" prefWidth="72.0" text="Họ và tên: "/>
+                <Label fx:id="hoTenLabel" layoutX="146.0" layoutY="65.0" prefHeight="30.0" prefWidth="121.0"
+                       text="Nguyễn Trọng Nhân"/>
+                <Label layoutX="26.0" layoutY="100.0" prefHeight="30.0" prefWidth="57.0" text="Mã NV: "/>
+                <Label fx:id="maNVLabel" layoutX="157.0" layoutY="100.0" prefHeight="30.0" prefWidth="72.0"
+                       text="20205110"/>
+                <Label layoutX="28.0" layoutY="148.0" prefHeight="23.0" prefWidth="65.0" text="Bộ phận:"/>
+                <Label fx:id="boPhanLabel" layoutX="155.0" layoutY="144.0" prefHeight="30.0" prefWidth="112.0"
+                       text="Công nhân"/>
+                <Label layoutX="28.0" layoutY="221.0" prefHeight="41.0" prefWidth="112.0" text="Thông tin :"/>
+                <Text fx:id="thongTinText" layoutX="148.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="Chấm công sai ca chiều" wrappingWidth="265.13671875"/>
+                <Label layoutX="26.0" layoutY="185.0" prefHeight="30.0" prefWidth="84.0" text="Ngày cần sửa:"/>
+                <Label fx:id="ngaySuaLabel" layoutX="155.0" layoutY="192.0" text="11/11/2021"/>
+                <Button layoutX="92.0" layoutY="301.0" mnemonicParsing="false" text="Chấp nhận"
+                        onAction="#chapNhanClick"/>
+                <Button layoutX="332.0" layoutY="301.0" mnemonicParsing="false" text="Từ  chối"
+                        onAction="#tuChoiClick"/>
+              </children>
+            </AnchorPane>
+          </VBox>
+        </VBox>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

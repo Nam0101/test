@@ -81,7 +81,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>itss.group14.timekeeper/itss.group14.timekeeper.HelloApplication</mainClass>
+              <mainClass>itss.group14.timekeeper/itss.group14.timekeeper.Main</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

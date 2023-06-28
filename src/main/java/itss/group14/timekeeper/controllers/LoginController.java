@@ -1,10 +1,16 @@
 package itss.group14.timekeeper.controllers;
 
+import itss.group14.timekeeper.contrains.FXMLconstrains;
+import itss.group14.timekeeper.ultis.Ultils;
+import itss.group14.timekeeper.ultis.ViewChangeUltils;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.sql.*;
+import java.util.prefs.Preferences;
 
 public class LoginController {
     public PasswordField passwordField;
@@ -38,37 +44,29 @@ public class LoginController {
     } catch (SQLException e) {
         e.printStackTrace();
     }
-    // Nếu không có kết quả truy vấn hoặc xảy ra lỗi, tức là thông tin đăng nhập không hợp lệ
-    return null;
-}
-    public void getAlldataintable(){
-        String query = "SELECT * FROM account";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("username"));
-                System.out.println(resultSet.getString("password"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        // Nếu không có kết quả truy vấn hoặc xảy ra lỗi, tức là thông tin đăng nhập không hợp lệ
+        return null;
     }
 
-    public void loginClick() {
-    String username = usernameField.getText();
-    String password = passwordField.getText();
-    String role = login(username, password);
-    if (role != null) {
-        System.out.println("Đăng nhập thành công với vai trò: " + role);
-        if (role.equals("admin")) {
-            // Xử lý cho vai trò admin
-        } else if (role.equals("user")) {
-            // Xử lý cho vai trò user
+    public void loginClick(ActionEvent event) throws Exception {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        String role = login(username, password);
+        if (role != null) {
+            Preferences userPreferences = Preferences.userRoot();
+            userPreferences.put("username", username);
+            userPreferences.put("role", role);
+            System.out.println("Đăng nhập thành công với vai trò: " + role);
+            if (role.equals("admin")) {
+                ViewChangeUltils changeScene = new ViewChangeUltils();
+                changeScene.changeView(event, FXMLconstrains.adminHomeFXML);
+            } else if (role.equals("worker")) {
+                // Xử lý cho vai trò user
+            } else {
+                // Xử lý cho các vai trò khác
+            }
         } else {
-            // Xử lý cho các vai trò khác
-        }
-    } else {
-        System.out.println("Đăng nhập thất bại");
+            Ultils.createDialog(Alert.AlertType.ERROR, "Đăng nhập thất bại", "Sai tên đăng nhập hoặc mật khẩu", "OK");
     }
 }
 }

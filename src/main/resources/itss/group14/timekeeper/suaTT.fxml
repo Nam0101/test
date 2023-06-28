@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19">
+    <children>
+        <Button layoutX="519.0" layoutY="349.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" text="Gửi"/>
+        <ImageView fitHeight="25.0" fitWidth="36.0" layoutX="557.0" layoutY="2.0" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <Label layoutX="40.0" layoutY="176.0" prefHeight="25.0" prefWidth="117.0" text="Giờ bắt đầu: "/>
+        <TextField layoutX="171.0" layoutY="176.0" prefHeight="25.0" prefWidth="111.0"/>
+        <Label layoutX="40.0" layoutY="218.0" prefHeight="25.0" prefWidth="117.0" text="Giờ kết thúc:"/>
+        <TextField layoutX="171.0" layoutY="218.0" prefHeight="25.0" prefWidth="111.0"/>
+        <Label layoutX="40.0" layoutY="262.0" prefHeight="25.0" prefWidth="117.0" text="Số giờ làm:"/>
+        <Label layoutX="40.0" layoutY="308.0" prefHeight="25.0" prefWidth="117.0" text="Số giờ làm thêm:"/>
+        <TextField layoutX="171.0" layoutY="262.0" prefHeight="25.0" prefWidth="111.0"/>
+        <TextField layoutX="171.0" layoutY="308.0" prefHeight="25.0" prefWidth="111.0"/>
+        <Label layoutX="40.0" layoutY="38.0" prefHeight="25.0" prefWidth="111.0" text="Họ và tên:"/>
+        <Label layoutX="40.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0" text="Mã nhân viên:"/>
+        <TextField layoutX="171.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0"/>
+        <TextField layoutX="171.0" layoutY="38.0" prefHeight="25.0" prefWidth="111.0"/>
+        <Label layoutX="323.0" layoutY="76.0" prefHeight="25.0" prefWidth="64.0" text="Đơn vi: "/>
+        <Label layoutX="323.0" layoutY="38.0" prefHeight="25.0" prefWidth="64.0" text="Chức vụ: "/>
+        <TextField layoutX="417.0" layoutY="38.0" prefHeight="25.0" prefWidth="98.0"/>
+        <TextField layoutX="417.0" layoutY="76.0" prefHeight="25.0" prefWidth="98.0"/>
+        <Label layoutX="40.0" layoutY="135.0" prefHeight="25.0" prefWidth="117.0" text="Ngày-Tháng-Năm:"/>
+        <TextField layoutX="171.0" layoutY="135.0" prefHeight="25.0" prefWidth="111.0"/>
+        <TextArea layoutX="323.0" layoutY="177.0" prefHeight="154.0" prefWidth="244.0"/>
+        <Label layoutX="413.0" layoutY="148.0" prefHeight="25.0" prefWidth="64.0" text="Ghi chú: "/>
+        <Button layoutY="2.0" mnemonicParsing="false" text="Back"/>
+    </children>
+</Pane>
