@@ -6,13 +6,9 @@ public class AttendanceRecord {
 
     private String employeeId;
     private String date;
-    private Time startTime;
-    private Time endTime;
 
-    public AttendanceRecord(String employeeId, String date, Time startTime, Time endTime) {
+    public AttendanceRecord(String employeeId, String date) {
         this.employeeId = employeeId;
         this.date = date;
-        this.startTime = startTime;
-        this.endTime = endTime;
     }
 }

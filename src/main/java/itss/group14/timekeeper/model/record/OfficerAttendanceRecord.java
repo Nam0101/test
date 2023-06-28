@@ -7,15 +7,13 @@ public class OfficerAttendanceRecord extends AttendanceRecord {
     private boolean afternoonSession;
     private double hoursLate;
     private double hoursEarlyLeave;
-    OfficerAttendanceRecord(String employeeId, String date, Time startTime, Time endTime) {
-        super(employeeId, date, startTime, endTime);
-    }
-
-    public OfficerAttendanceRecord(String employeeId, String date, Time startTime, Time endTime, boolean morningSession, boolean afternoonSession, double hoursLate, double hoursEarlyLeave) {
-        super(employeeId, date, startTime, endTime);
+    public OfficerAttendanceRecord(String employeeId, String date,boolean morningSession, boolean afternoonSession, double hoursLate, double hoursEarlyLeave) {
+        super(employeeId, date);
         this.morningSession = morningSession;
         this.afternoonSession = afternoonSession;
         this.hoursLate = hoursLate;
         this.hoursEarlyLeave = hoursEarlyLeave;
     }
+
+
 }

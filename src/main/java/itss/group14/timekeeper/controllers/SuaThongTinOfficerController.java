@@ -4,6 +4,7 @@ import itss.group14.timekeeper.contrains.FXMLconstrains;
 import itss.group14.timekeeper.dbservices.dbconection.AbstractSQLConnection;
 import itss.group14.timekeeper.dbservices.dbconection.SqliteConnection;
 import itss.group14.timekeeper.model.Request;
+import itss.group14.timekeeper.model.record.OfficerAttendanceRecord;
 import itss.group14.timekeeper.ultis.ViewChangeUltils;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -67,5 +68,12 @@ public class SuaThongTinOfficerController implements Initializable {
     }
 
     public void suaTT(ActionEvent event) {
+        String employeeId = maNV.getText();
+        String date = NgaySua.getText();
+        double dimuon = Double.parseDouble(suaCa1.getText());
+        double vesom = Double.parseDouble(suaCa2.getText());
+        boolean sang = checkBoxSang.isSelected();
+        boolean chieu = checkBoxChieu.isSelected();
+        OfficerAttendanceRecord officerAttendanceRecord = new OfficerAttendanceRecord(employeeId, date, sang, chieu, dimuon, vesom);
     }
 }
