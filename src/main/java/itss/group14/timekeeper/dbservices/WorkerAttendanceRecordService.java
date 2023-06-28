@@ -27,9 +27,9 @@ public class WorkerAttendanceRecordService {
     public static void updateWorkerAttendanceRecordByEmployeeIdDate(Connection connection, WorkerAttendanceRecord workerAttendanceRecord) throws SQLException {
         String query = "UPDATE WorkerAttendanceRecord SET shift1Hours = ?, shift2Hours = ?, shift3Hours = ? WHERE employee_id  = ? AND date = ?";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setDouble(1, workerAttendanceRecord.getShift1Hours());
-        statement.setDouble(2, workerAttendanceRecord.getShift2Hours());
-        statement.setDouble(3, workerAttendanceRecord.getShift3Hours());
+        statement.setDouble(1, workerAttendanceRecord.getShiftHours1());
+        statement.setDouble(2, workerAttendanceRecord.getShiftHours2());
+        statement.setDouble(3, workerAttendanceRecord.getShiftHours3());
         statement.setString(4, workerAttendanceRecord.getEmployeeId());
         statement.setString(5, workerAttendanceRecord.getDate());
         statement.executeUpdate();

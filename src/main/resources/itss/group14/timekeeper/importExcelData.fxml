@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+      fx:controller="itss.group14.timekeeper.controllers.importdata.SelectImportDataController"
+>
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0">
+         <children>
+            <Button layoutX="210.0" layoutY="126.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="180.0"
+                    text="Nhập từ API"/>
+            <Button fx:id="btnBack" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0"
+                    prefWidth="44.0" text="Back" onAction="#handleBack"/>
+            <Button fx:id="importButton" layoutX="210.0" layoutY="200.0" mnemonicParsing="false" prefHeight="57.0"
+                    prefWidth="180.0" text="Nhập từ file excel" onAction="#handleExcel"/>
+         </children>
+      </Pane>
+   </children>
+</Pane>

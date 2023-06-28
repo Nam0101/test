@@ -37,7 +37,8 @@ public class AdminHomeController implements Initializable {
         viewChangeUltils.changeView(event, FXMLconstrains.danhSachYCFXML);
     }
 
-    public void importInfor(ActionEvent event) {
+    public void importInfor(ActionEvent event) throws Exception {
+        viewChangeUltils.changeView(event, FXMLconstrains.importDataSelectFXML);
     }
 
     public void exportInfor(ActionEvent event) {

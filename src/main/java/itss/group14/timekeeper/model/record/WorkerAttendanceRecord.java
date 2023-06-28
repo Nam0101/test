@@ -1,7 +1,5 @@
 package itss.group14.timekeeper.model.record;
 
-import java.sql.Time;
-
 public class WorkerAttendanceRecord extends AttendanceRecord {
     double shiftHours1;
     double shiftHours2;
@@ -11,6 +9,17 @@ public class WorkerAttendanceRecord extends AttendanceRecord {
         super(employeeId, date);
     }
 
+    public double getShiftHours1() {
+        return shiftHours1;
+    }
+
+    public double getShiftHours2() {
+        return shiftHours2;
+    }
+
+    public double getShiftHours3() {
+        return shiftHours3;
+    }
 
     public WorkerAttendanceRecord(String employeeId, String date, double shift1Hours, double shift2Hours, double shift3Hours) {
         super(employeeId, date);

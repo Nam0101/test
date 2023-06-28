@@ -2,6 +2,7 @@ package itss.group14.timekeeper.controllers;
 
 import itss.group14.timekeeper.contrains.FXMLconstrains;
 import itss.group14.timekeeper.dbservices.EmployeeService;
+import itss.group14.timekeeper.dbservices.OfficerAttendanceRecordService;
 import itss.group14.timekeeper.dbservices.RequestService;
 import itss.group14.timekeeper.dbservices.WorkerAttendanceRecordService;
 import itss.group14.timekeeper.dbservices.dbconection.AbstractSQLConnection;
@@ -9,8 +10,6 @@ import itss.group14.timekeeper.dbservices.dbconection.SqliteConnection;
 import itss.group14.timekeeper.enums.Status;
 import itss.group14.timekeeper.model.Request;
 import itss.group14.timekeeper.ultis.ViewChangeUltils;
-
-import itss.group14.timekeeper.dbservices.OfficerAttendanceRecordService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,10 +74,8 @@ public class YeuCauChinhSuaController implements Initializable {
             String role = EmployeeService.getRoleEmployeeById(connection, employeeId);
             assert role != null;
             if (role.equals("officer")) {
-                System.out.println(role);
                 handleOfficerRequest(actionEvent, employeeId, date);
             } else {
-                System.out.println(role);
                 handleWorkerRequest(actionEvent, employeeId, date);
             }
         }
@@ -121,7 +118,6 @@ public class YeuCauChinhSuaController implements Initializable {
         ResultSet res = OfficerAttendanceRecordService.getOfficerAttendanceRecordByEmployeeIdDate(connection, employeeId, date);
         assert res != null;
         if (res.next()) {
-            System.out.println("handleOfficerRequest");
             FXMLLoader loader = new FXMLLoader(getClass().getResource(FXMLconstrains.suaTTOfficer));
             Parent suaTTWorkerRoot = loader.load();
             SuaThongTinOfficerController suaTTWorkerController = loader.getController();

@@ -54,7 +54,7 @@ public class SuaThongTinWorkerController implements Initializable {
             return;
         }
         try {
-            WorkerAttendanceRecordService.updateWorkerAttendanceRecordByEmployeeIdDate(connection, employeeId, date, shift1Hours, shift2Hours, shift3Hours);
+            WorkerAttendanceRecordService.updateWorkerAttendanceRecordByEmployeeIdDate(connection, workerAttendanceRecord);
             if (selectedRequest != null) {
                 selectedRequest.setStatus(String.valueOf(Status.OK));
                 RequestService.updateRequestStatus(connection, selectedRequest);

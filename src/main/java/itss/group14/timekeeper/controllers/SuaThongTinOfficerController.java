@@ -77,18 +77,16 @@ public class SuaThongTinOfficerController implements Initializable {
         boolean sang = checkBoxSang.isSelected();
         boolean chieu = checkBoxChieu.isSelected();
         OfficerAttendanceRecord officerAttendanceRecord = new OfficerAttendanceRecord(employeeId, date, sang, chieu, dimuon, vesom);
-        if(dimuon<0 || vesom<0){
+        if (dimuon < 0 || vesom < 0 || dimuon > 4 || vesom > 4) {
             Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Số giờ làm không hợp lệ.", "Đóng");
-        }
-        else {
+        } else {
             try {
                 OfficerAttendanceRecordService.updateOfficerAttendanceRecord(connection, officerAttendanceRecord);
                 if (selectedRequest != null) {
                     selectedRequest.setStatus(String.valueOf(Status.OK));
                     RequestService.updateRequestStatus(connection, selectedRequest);
-            }
-            }
-            catch (Exception e){
+                }
+            } catch (Exception e) {
                 Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Không thể cập nhật dữ liệu.", "Đóng");
             }
             Ultils.createDialog(Alert.AlertType.INFORMATION, "Thành công", "Sửa thành công.", "Đóng");
