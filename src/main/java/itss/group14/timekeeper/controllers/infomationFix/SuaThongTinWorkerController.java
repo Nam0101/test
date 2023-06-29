@@ -22,7 +22,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class SuaThongTinWorkerController implements Initializable {
+public class SuaThongTinWorkerController extends ASuaThongTin implements Initializable {
 
     private final ViewChangeUltils viewChangeUltils = new ViewChangeUltils();
     public Label bophan;
@@ -42,12 +42,22 @@ public class SuaThongTinWorkerController implements Initializable {
     public SuaThongTinWorkerController() throws SQLException {
     }
 
+    @Override
     public void suaTT(ActionEvent event) throws Exception {
         String employeeId = maNV.getText();
         String date = NgaySua.getText();
-        double shift1Hours = Double.parseDouble(suaCa1.getText());
-        double shift2Hours = Double.parseDouble(suaCa2.getText());
-        double shift3Hours = Double.parseDouble(suaCa3.getText());
+        double shift1Hours = 0;
+        double shift2Hours = 0;
+        double shift3Hours = 0;
+        try {
+            shift1Hours = Double.parseDouble(suaCa1.getText());
+            shift2Hours = Double.parseDouble(suaCa2.getText());
+            shift3Hours = Double.parseDouble(suaCa3.getText());
+        } catch (Exception e) {
+            Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Số giờ làm không hợp lệ.", "Đóng");
+            return;
+        }
+
         workerAttendanceRecord = new WorkerAttendanceRecord(employeeId, date, shift1Hours, shift2Hours, shift3Hours);
         if (shift1Hours < 0 || shift1Hours > 4 || shift2Hours < 0 || shift2Hours > 4 || shift3Hours < 0 || shift3Hours > 4) {
             Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Số giờ làm không hợp lệ.", "Đóng");
@@ -80,6 +90,7 @@ public class SuaThongTinWorkerController implements Initializable {
         selectedRequest = request;
     }
 
+    @Override
     public void backAction(ActionEvent event) throws Exception {
         viewChangeUltils.changeView(event, FXMLconstrains.danhSachYCFXML);
     }

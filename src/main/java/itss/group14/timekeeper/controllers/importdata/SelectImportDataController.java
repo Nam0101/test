@@ -7,7 +7,10 @@ import itss.group14.timekeeper.ultis.Ultils;
 import itss.group14.timekeeper.ultis.ViewChangeUltils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
@@ -50,7 +53,7 @@ public class SelectImportDataController implements Initializable {
         viewChangeUltils.changeView(event, FXMLconstrains.adminHomeFXML);
     }
 
-    public void handleExcel(ActionEvent event) throws IOException {
+    public void handleExcel(ActionEvent event) throws IOException, SQLException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
         Stage stage = (Stage) importButton.getScene().getWindow();
@@ -61,7 +64,7 @@ public class SelectImportDataController implements Initializable {
 
     }
 
-    public void importData(File file) {
+    public void importData(File file) throws SQLException, IOException {
         try (FileInputStream excelFile = new FileInputStream(file);
              Workbook workbook = new XSSFWorkbook(excelFile)) {
 
@@ -112,15 +115,29 @@ public class SelectImportDataController implements Initializable {
         } catch (IOException | IllegalArgumentException e) {
             Ultils.createDialog(Alert.AlertType.ERROR, "Error", "Error importing data", "The selected file is not in the expected format.");
         }
-        processData();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(FXMLconstrains.excelResultFXML));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) importButton.getScene().getWindow();
+            currentStage.hide();
+            ExcelResultController controller = loader.getController();
+            controller.setEmployeeData(employeeData);
+            controller.setConnection(connection);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error loading excel result view");
+        }
+
     }
 
 
-    private void processData() {
+    private void processData() throws SQLException {
         ProcessDataExcel processDataExcel = new ProcessDataExcel(employeeData, connection);
-//        processDataExcel.PrintData();
         processDataExcel.processEmployeeData();
-
     }
 
 

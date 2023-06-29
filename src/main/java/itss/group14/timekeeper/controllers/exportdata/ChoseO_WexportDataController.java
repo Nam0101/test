@@ -17,6 +17,7 @@ public class ChoseO_WexportDataController {
         viewChangeUltils.changeView(event, FXMLconstrains.exportDataWorkerFXML);
     }
 
-    public void handleOffice(ActionEvent event) {
+    public void handleOffice(ActionEvent event) throws Exception {
+        viewChangeUltils.changeView(event, FXMLconstrains.exportDataOfficerFXML);
     }
 }

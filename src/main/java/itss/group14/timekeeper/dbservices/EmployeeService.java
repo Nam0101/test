@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmployeeService {
+public class EmployeeService implements IService {
     private static final String TABLE_NAME = "employee";
 
     public static ResultSet getAllEmployees(Connection connection) throws SQLException {

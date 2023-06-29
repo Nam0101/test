@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+      fx:controller="itss.group14.timekeeper.controllers.worker.WorkerHomeController">
+   <children>
+      <Button fx:id="sendRequestButton" layoutX="226.0" layoutY="349.0" mnemonicParsing="false" onAction="#suaThongTin"
+              text="Yêu cầu chỉnh sửa"/>
+      <Label layoutX="40.0" layoutY="176.0" prefHeight="25.0" prefWidth="111.0" text="Ca 1:"/>
+      <Label fx:id="shift1" layoutX="171.0" layoutY="176.0" prefHeight="25.0" prefWidth="111.0"/>
+      <Label layoutX="40.0" layoutY="213.0" prefHeight="25.0" prefWidth="111.0" text="Ca 2:"/>
+      <Label fx:id="shift2" layoutX="171.0" layoutY="213.0" prefHeight="25.0" prefWidth="111.0"/>
+      <Label layoutX="40.0" layoutY="255.0" prefHeight="25.0" prefWidth="111.0" text="Ca 3:"/>
+      <Label fx:id="shift3" layoutX="171.0" layoutY="255.0" prefHeight="25.0" prefWidth="111.0"/>
+      <Label layoutX="40.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0" text="Họ và tên:"/>
+      <Label layoutX="40.0" layoutY="114.0" prefHeight="25.0" prefWidth="111.0" text="Mã nhân viên:"/>
+      <Label fx:id="workerID" layoutX="171.0" layoutY="114.0" prefHeight="25.0" prefWidth="111.0"/>
+      <Label fx:id="workerName" layoutX="171.0" layoutY="76.0" prefHeight="25.0" prefWidth="111.0"/>
+      <Label layoutX="323.0" layoutY="114.0" prefHeight="25.0" prefWidth="64.0" text="Đơn vi: "/>
+      <Label layoutX="323.0" layoutY="76.0" prefHeight="25.0" prefWidth="64.0" text="Chức vụ: "/>
+      <Label layoutX="417.0" layoutY="76.0" prefHeight="25.0" prefWidth="98.0" text="Công nhân"/>
+      <Label fx:id="department" layoutX="417.0" layoutY="114.0" prefHeight="25.0" prefWidth="98.0"/>
+      <Label layoutX="283.0" layoutY="180.0" prefHeight="17.0" prefWidth="34.0" text="Ngày"/>
+      <Label layoutX="370.0" layoutY="180.0" prefHeight="17.0" prefWidth="34.0" text="Tháng"/>
+      <Label layoutX="460.0" layoutY="180.0" prefHeight="17.0" prefWidth="34.0" text="Năm"/>
+      <TextField fx:id="days" layoutX="330.0" layoutY="176.0" prefHeight="25.0" prefWidth="34.0"/>
+      <TextField fx:id="months" layoutX="417.0" layoutY="176.0" prefHeight="25.0" prefWidth="34.0"/>
+      <TextField fx:id="year" layoutX="494.0" layoutY="176.0" prefHeight="25.0" prefWidth="41.0"/>
+      <Button layoutX="494.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleView" text="View"/>
+      <Button layoutX="535.0" layoutY="27.0" mnemonicParsing="false" onAction="#logout" text="Logout"/>
+      <Label fx:id="Wellcome" layoutX="111.0" layoutY="22.0" prefHeight="35.0" prefWidth="355.0" text="Chào mừng "
+             textFill="#5e0202">
+         <font>
+            <Font size="24.0"/>
+         </font>
+      </Label>
+   </children>
+</Pane>

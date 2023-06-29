@@ -2,6 +2,8 @@ package itss.group14.timekeeper.controllers.importdata;
 
 import itss.group14.timekeeper.dbservices.OfficerAttendanceRecordService;
 import itss.group14.timekeeper.dbservices.WorkerAttendanceRecordService;
+import itss.group14.timekeeper.dbservices.dbconection.AbstractSQLConnection;
+import itss.group14.timekeeper.dbservices.dbconection.SqliteConnection;
 import itss.group14.timekeeper.model.EmployeeShiftHours;
 import itss.group14.timekeeper.model.OfficerShiftAttendance;
 import itss.group14.timekeeper.model.record.OfficerAttendanceRecord;
@@ -26,14 +28,11 @@ public class ProcessSaveDataBase {
         this.connection = connection;
     }
 
-    public void saveData() {
-//        print all data
-//        for (EmployeeShiftHours shiftHours : employeeShiftHours) {
-//            System.out.println(shiftHours.toString());
-//        }
-//        for (OfficerShiftAttendance shiftAttendance : officerShiftAttendances) {
-//            System.out.println(shiftAttendance.toString());
-//        }
+    public void saveData() throws SQLException {
+        if(connection.isClosed()){
+            AbstractSQLConnection abstractSQLConnection = new SqliteConnection();
+            connection = abstractSQLConnection.getConnection();
+        }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         try {
             for (EmployeeShiftHours shiftHours : employeeShiftHours) {
@@ -58,9 +57,18 @@ public class ProcessSaveDataBase {
                     OfficerAttendanceRecordService.insertOfficerAttendanceRecord(connection, officerAttendanceRecord);
                 }
             }
-            Ultils.createDialog(Alert.AlertType.INFORMATION, "Success", "Data imported successfully", "Data imported successfully");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Ultils.createDialog(Alert.AlertType.INFORMATION, "Success", "Data imported successfully", "Data imported successfully");
     }
+
+    void closeDatabaseConnection() {
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 }

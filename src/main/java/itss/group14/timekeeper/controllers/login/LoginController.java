@@ -1,6 +1,7 @@
-package itss.group14.timekeeper.controllers;
+package itss.group14.timekeeper.controllers.login;
 
 import itss.group14.timekeeper.contrains.FXMLconstrains;
+import itss.group14.timekeeper.dbservices.AccountService;
 import itss.group14.timekeeper.dbservices.dbconection.AbstractSQLConnection;
 import itss.group14.timekeeper.dbservices.dbconection.SqliteConnection;
 import itss.group14.timekeeper.ultis.Ultils;
@@ -14,8 +15,6 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
@@ -25,26 +24,16 @@ public class LoginController implements Initializable {
     public Button loginButton;
     public TextField usernameField;
     private Connection connection;
+    private final ViewChangeUltils changeScene = new ViewChangeUltils();
 
-    public String login(String username, String password) {
-        String query = "SELECT role FROM account WHERE username = ? AND password = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, username);
-            statement.setString(2, password);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                return resultSet.getString("role");
-            }
+    public String login(String username, String password) throws SQLException {
+        String role = null;
+        try {
+            role = AccountService.getRole(connection, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
         }
-        return null;
+        return role;
     }
 
     public void loginClick(ActionEvent event) throws Exception {
@@ -60,14 +49,21 @@ public class LoginController implements Initializable {
             userPreferences.put("username", username);
             userPreferences.put("role", role);
             if (role.equals("admin")) {
-                ViewChangeUltils changeScene = new ViewChangeUltils();
                 changeScene.changeView(event, FXMLconstrains.adminHomeFXML);
+                closeConnection();
             } else if (role.equals("worker")) {
+                changeScene.changeView(event, FXMLconstrains.workerHomeFXML);
+                closeConnection();
             } else {
             }
         } else {
             Ultils.createDialog(Alert.AlertType.ERROR, "Đăng nhập thất bại", "Sai tên đăng nhập hoặc mật khẩu", "OK");
         }
+
+    }
+
+    void closeConnection() throws SQLException {
+        connection.close();
     }
 
     /**

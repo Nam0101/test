@@ -22,10 +22,38 @@ public class Ultils {
     public Ultils() {
     }
 
-    public static void convertDate(String date) {
-        String[] dateSplit = date.split("-");
-        String newDate = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
-        System.out.println(newDate);
+    public static String convertMonthYear(String month, String year) {
+        if (month.length() == 1) {
+            month = "0" + month;
+        }
+        return month + "/" + year;
     }
 
+    public static String convertDayMonthYear(String day, String month, String year) {
+        if (month.length() == 1) {
+            month = "0" + month;
+        }
+        if (day.length() == 1) {
+            day = "0" + day;
+        }
+        return day + "/" + month + "/" + year;
+    }
+
+    public static boolean isNumber(String num) {
+        try {
+            Double.parseDouble(num);
+            return false;
+        } catch (NumberFormatException e) {
+            return true;
+        }
+    }
+
+    public static boolean isNumeric(String monthText) {
+        try {
+            Integer.parseInt(monthText);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

@@ -1,5 +1,7 @@
 package itss.group14.timekeeper.model;
 
+import itss.group14.timekeeper.enums.Status;
+
 public class Request {
     private Employee employee;
     private String date;
@@ -14,10 +16,24 @@ public class Request {
         this.reason = reason;
     }
 
+    public Request(String Employee_id, String date, String reason) {
+        this.employee = new Employee(Employee_id);
+        this.date = date;
+        this.reason = reason;
+    }
+
+    public Request(String Employee_id, String date, String reason, String status) {
+        this.employee = new Employee(Employee_id);
+        this.date = date;
+        this.reason = reason;
+        this.status = status;
+    }
+
     public Request(Employee employee, String date, String reason) {
         this.employee = employee;
         this.date = date;
         this.reason = reason;
+        this.status = Status.PENDING.toString();
     }
 
     public Request(String id, String name, String department, String date, String status) {
@@ -76,7 +92,7 @@ public class Request {
 
     public String toString() {
         return "Request{" +
-                "employee=" + employee +
+                "employee_id=" + employee.getId() +
                 ", date='" + date + '\'' +
                 ", status='" + status + '\'' +
                 ", reason='" + reason + '\'' +

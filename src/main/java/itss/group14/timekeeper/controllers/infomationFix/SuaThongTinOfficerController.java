@@ -18,7 +18,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
 
-public class SuaThongTinOfficerController implements Initializable {
+public class SuaThongTinOfficerController extends ASuaThongTin implements Initializable {
     public final ViewChangeUltils viewChangeUltils = new ViewChangeUltils();
     public CheckBox checkBoxSang;
     public CheckBox checkBoxChieu;
@@ -53,8 +53,14 @@ public class SuaThongTinOfficerController implements Initializable {
         }
     }
 
+    @Override
     public void backAction(ActionEvent event) throws Exception {
         viewChangeUltils.changeView(event, FXMLconstrains.danhSachYCFXML);
+        try {
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setOfficerData(String employeeName, String employeeId, String Bophan, String date, double dimuon, double vesom, boolean sang, boolean chieu, Request selectedRequest) {
@@ -69,16 +75,30 @@ public class SuaThongTinOfficerController implements Initializable {
         this.selectedRequest = selectedRequest;
     }
 
+    @Override
     public void suaTT(ActionEvent event) throws Exception {
         String employeeId = maNV.getText();
         String date = NgaySua.getText();
-        double dimuon = Double.parseDouble(suaCa1.getText());
-        double vesom = Double.parseDouble(suaCa2.getText());
+        double dimuon = 0;
+        double vesom = 0;
+        try {
+            dimuon = Double.parseDouble(suaCa1.getText());
+            vesom = Double.parseDouble(suaCa2.getText());
+        } catch (NumberFormatException e) {
+            Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Số giờ làm không hợp lệ.", "Đóng");
+            return;
+        }
+
         boolean sang = checkBoxSang.isSelected();
         boolean chieu = checkBoxChieu.isSelected();
+        if(!sang && !chieu){
+            Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Không đi làm thì sao đi muộn?", "Đóng");
+            return;
+        }
         OfficerAttendanceRecord officerAttendanceRecord = new OfficerAttendanceRecord(employeeId, date, sang, chieu, dimuon, vesom);
         if (dimuon < 0 || vesom < 0 || dimuon > 4 || vesom > 4) {
             Ultils.createDialog(Alert.AlertType.ERROR, "Lỗi", "Số giờ làm không hợp lệ.", "Đóng");
+            return;
         } else {
             try {
                 OfficerAttendanceRecordService.updateOfficerAttendanceRecord(connection, officerAttendanceRecord);
@@ -93,4 +113,6 @@ public class SuaThongTinOfficerController implements Initializable {
             viewChangeUltils.changeView(event, FXMLconstrains.danhSachYCFXML);
         }
     }
+
+
 }

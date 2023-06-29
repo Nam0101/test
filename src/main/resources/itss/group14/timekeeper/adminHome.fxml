@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-      fx:controller="itss.group14.timekeeper.controllers.AdminHomeController" style="-fx-background-color: #FAFAD2;">
+      prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FAFAD2;"
+      xmlns="http://javafx.com/javafx/11.0.14-internal"
+      fx:controller="itss.group14.timekeeper.controllers.admin.AdminHomeController">
     <children>
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
               prefWidth="600.0">
@@ -26,6 +27,7 @@
                         <Font name="Arial" size="24.0"/>
                     </font>
                 </Text>
+                <Button onAction="#logout" layoutX="532.0" layoutY="15.0" mnemonicParsing="false" text="Logout"/>
             </children>
         </Pane>
     </children>

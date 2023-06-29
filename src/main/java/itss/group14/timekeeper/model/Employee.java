@@ -21,7 +21,11 @@ public class Employee {
         this.department = department;
     }
 
-    public Employee() {
+    public Employee(String Employee_id) {
+        this.id = Employee_id;
+    }
+
+    public Employee(Employee employee) {
 
     }
 

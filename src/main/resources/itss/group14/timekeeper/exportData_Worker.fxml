@@ -12,12 +12,12 @@
          <children>
             <TableView fx:id="thongTinTable" layoutX="12.0" layoutY="67.0" prefHeight="276.0" prefWidth="575.0">
                <columns>
-                  <TableColumn prefWidth="133.60003662109375" text="Họ và tên"/>
-                  <TableColumn prefWidth="57.5999755859375" text="MNV"/>
-                  <TableColumn prefWidth="103.0" text="Đơn vị"/>
-                  <TableColumn prefWidth="66.0" text="Tháng"/>
-                  <TableColumn prefWidth="112.79998779296875" text="TG làm"/>
-                  <TableColumn prefWidth="104.0" text="TG làm thêm"/>
+                   <TableColumn fx:id="name" prefWidth="133.60003662109375" text="Họ và tên"/>
+                   <TableColumn fx:id="id" prefWidth="57.5999755859375" text="MNV"/>
+                   <TableColumn fx:id="department" prefWidth="103.0" text="Đơn vị"/>
+                   <TableColumn fx:id="MonthYear" prefWidth="66.0" text="Tháng"/>
+                   <TableColumn fx:id="WorkingTime" prefWidth="112.79998779296875" text="TG làm"/>
+                   <TableColumn fx:id="OverTime" prefWidth="104.0" text="TG làm thêm"/>
                </columns>
             </TableView>
             <Button layoutX="479.0" layoutY="351.0" mnemonicParsing="false" onAction="#excelButton" prefHeight="25.0"

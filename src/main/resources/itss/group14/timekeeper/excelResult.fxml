@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+      fx:controller="itss.group14.timekeeper.controllers.importdata.ExcelResultController">
+    <children>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+              prefWidth="600.0">
+            <children>
+                <Button layoutX="14.0" layoutY="14.0" onAction="#handleBack" prefHeight="25.0" prefWidth="43.0"
+                        text="Back"/>
+                <TableView fx:id="ExcelData" layoutX="12.0" layoutY="67.0" prefHeight="276.0" prefWidth="575.0">
+                    <columns>
+                        <TableColumn fx:id="employeeId" prefWidth="118.0" text="MNV"/>
+                        <TableColumn fx:id="Date" prefWidth="236.0" text="Ngày"/>
+                        <TableColumn fx:id="Time" prefWidth="220.0" text="Thời gian"/>
+                    </columns>
+                </TableView>
+                <Button layoutX="543.0" layoutY="354.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="25.0"
+                        prefWidth="43.0" text="Lưu"/>
+            </children>
+        </Pane>
+    </children>
+</Pane>

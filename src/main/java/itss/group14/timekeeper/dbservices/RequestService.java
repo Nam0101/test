@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RequestService {
+public class RequestService implements IService {
     public static ResultSet getAllRequests(Connection connection) throws SQLException {
         String query = "SELECT * FROM request";
         PreparedStatement statement = connection.prepareStatement(query);

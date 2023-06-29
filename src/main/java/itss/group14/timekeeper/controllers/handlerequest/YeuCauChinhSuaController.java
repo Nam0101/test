@@ -1,4 +1,4 @@
-package itss.group14.timekeeper.controllers;
+package itss.group14.timekeeper.controllers.handlerequest;
 
 import itss.group14.timekeeper.contrains.FXMLconstrains;
 import itss.group14.timekeeper.controllers.infomationFix.SuaThongTinOfficerController;
@@ -30,7 +30,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class YeuCauChinhSuaController implements Initializable {
+public class YeuCauChinhSuaController implements Initializable, IHandleRequest {
     private final ViewChangeUltils viewChangeUltils = new ViewChangeUltils();
     @FXML
     private Label hoTenLabel;
@@ -60,6 +60,7 @@ public class YeuCauChinhSuaController implements Initializable {
         }
     }
 
+    @Override
     public void displayRequestDetails(Request request) {
         selectedRequest = request;
         hoTenLabel.setText(request.getEmployee().getName());
@@ -69,6 +70,7 @@ public class YeuCauChinhSuaController implements Initializable {
         thongTinText.setText(request.getReason());
     }
 
+    @Override
     public void chapNhanClick(ActionEvent actionEvent) throws Exception {
         if (selectedRequest != null) {
             String employeeId = selectedRequest.getEmployeeId();
@@ -116,7 +118,6 @@ public class YeuCauChinhSuaController implements Initializable {
         }
     }
     private void handleOfficerRequest(ActionEvent actionEvent, String employeeId, String date) throws Exception {
-
         ResultSet res = OfficerAttendanceRecordService.getOfficerAttendanceRecordByEmployeeIdDate(connection, employeeId, date);
         assert res != null;
         if (res.next()) {
@@ -125,7 +126,7 @@ public class YeuCauChinhSuaController implements Initializable {
             SuaThongTinOfficerController suaTTWorkerController = loader.getController();
             String EName = EmployeeService.getNameEmployeeById(connection, employeeId);
             String Ebophan = EmployeeService.getDepartmentEmployeeById(connection, employeeId);
-            suaTTWorkerController.setOfficerData(EName, res.getString("employee_id"), Ebophan, res.getString("date"), res.getDouble("hoursLate"),res.getDouble("afternoonSession"), res.getBoolean("morningSession"),res.getBoolean("afternoonSession"), selectedRequest);
+            suaTTWorkerController.setOfficerData(EName, res.getString("employee_id"), Ebophan, res.getString("date"), res.getDouble("hoursLate"),res.getDouble("hoursEarlyLeave"), res.getBoolean("morningSession"),res.getBoolean("afternoonSession"), selectedRequest);
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             currentStage.hide();
             Stage stage = new Stage();
@@ -149,6 +150,7 @@ public class YeuCauChinhSuaController implements Initializable {
         }
     }
 
+    @Override
     public void tuChoiClick(ActionEvent actionEvent) throws Exception {
         if (selectedRequest != null) {
             selectedRequest.setStatus(String.valueOf(Status.REFUSE));

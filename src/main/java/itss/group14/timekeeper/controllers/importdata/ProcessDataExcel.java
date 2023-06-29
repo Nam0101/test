@@ -1,11 +1,15 @@
 package itss.group14.timekeeper.controllers.importdata;
 
 import itss.group14.timekeeper.dbservices.EmployeeService;
+import itss.group14.timekeeper.dbservices.dbconection.AbstractSQLConnection;
+import itss.group14.timekeeper.dbservices.dbconection.SqliteConnection;
 import itss.group14.timekeeper.model.EmployeeShiftHours;
 import itss.group14.timekeeper.model.OfficerShiftAttendance;
+import itss.group14.timekeeper.ultis.Ultils;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +31,7 @@ public class ProcessDataExcel {
         this.connection = connection;
     }
 
-    public void PrintData() {
+    public void PrintData() throws SQLException {
         for (Map.Entry<String, List<String>> entry : employeeData.entrySet()) {
             String employeeId = entry.getKey();
             List<String> timestamps = entry.getValue();
@@ -38,7 +42,11 @@ public class ProcessDataExcel {
         mapEmployeeIdAndRole();
     }
 
-    public void mapEmployeeIdAndRole() {
+    public void mapEmployeeIdAndRole() throws SQLException {
+        if(connection.isClosed() || connection == null){
+            AbstractSQLConnection abstractSQLConnection = new SqliteConnection();
+            connection = abstractSQLConnection.getConnection();
+        }
         for (Map.Entry<String, List<String>> entry : employeeData.entrySet()) {
             String employeeId = entry.getKey();
             String resultSet = EmployeeService.getRoleEmployeeById(connection, employeeId);
@@ -48,7 +56,8 @@ public class ProcessDataExcel {
         }
     }
 
-    public void processEmployeeData() {
+    public void processEmployeeData() throws SQLException {
+        mapEmployeeIdAndRole();
         for (Map.Entry<String, List<String>> entry : employeeData.entrySet()) {
             String employeeId = entry.getKey();
             List<String> timestamps = entry.getValue();
@@ -59,24 +68,20 @@ public class ProcessDataExcel {
                         employeeShiftHours = processWorkerData(employeeId, timestamps);
                     } else if (role.equals("officer")) {
                         officerShiftAttendances = processOfficerData(employeeId, timestamps);
-
-                        ProcessSaveDataBase processSaveDataBase = new ProcessSaveDataBase(employeeShiftHours, officerShiftAttendances, connection);
-                        processSaveDataBase.saveData();
                     }
+                    ProcessSaveDataBase processSaveDataBase = new ProcessSaveDataBase(employeeShiftHours, officerShiftAttendances, connection);
+                    processSaveDataBase.saveData();
                 } catch (Exception e) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Error processing data");
-                    alert.setContentText("An error occurred while processing data for employee ID: " + employeeId + ".");
-                    alert.showAndWait();
+                    Ultils.createDialog(Alert.AlertType.ERROR, "Error", "Error processing data", "An error occurred while processing data for employee ID: " + employeeId + ".");
                 }
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Error processing data");
-                alert.setContentText("Employee ID: " + employeeId + " is not in the database.");
-                alert.showAndWait();
+                Ultils.createDialog(Alert.AlertType.ERROR, "Error", "Error processing data", "An error occurred while processing data for employee ID: " + employeeId + "." + "Employee ID not found in database.");
             }
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

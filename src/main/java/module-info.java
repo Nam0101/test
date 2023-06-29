@@ -22,4 +22,13 @@ module itss.group14.timekeeper {
     exports itss.group14.timekeeper.controllers.exportdata;
     exports itss.group14.timekeeper.controllers.infomationFix;
     opens itss.group14.timekeeper.controllers.infomationFix to javafx.fxml;
+    opens itss.group14.timekeeper.model.export to javafx.base;
+    exports itss.group14.timekeeper.controllers.handlerequest;
+    opens itss.group14.timekeeper.controllers.handlerequest to javafx.fxml;
+    exports itss.group14.timekeeper.controllers.admin;
+    opens itss.group14.timekeeper.controllers.admin to javafx.fxml;
+    exports itss.group14.timekeeper.controllers.login;
+    opens itss.group14.timekeeper.controllers.login to javafx.fxml;
+    exports itss.group14.timekeeper.controllers.worker;
+    opens itss.group14.timekeeper.controllers.worker to javafx.fxml;
 }

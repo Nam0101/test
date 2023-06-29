@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class WorkerAttendanceRecordService {
+public class WorkerAttendanceRecordService implements IService {
 
 
     public static ResultSet getAllWorkerAttendanceRecord(Connection connection) throws SQLException {
@@ -47,10 +47,25 @@ public class WorkerAttendanceRecordService {
     }
 
     public static ResultSet getAllWorkerAttendanceRecordByMonthAndYear(Connection connection, String Month, String Year) throws SQLException {
-        String monthYear = "%" + Month + "/" + Year;
+        if (Month.length() == 1) {
+            Month = "0" + Month;
+        }
+        String monthYear = "%/" + Month + "/" + Year;
         String query = "SELECT * FROM WorkerAttendanceRecord WHERE date LIKE ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, monthYear);
         return statement.executeQuery();
     }
+
+    public static ResultSet getSumWorkerWorkTimeGroupByWorkerIDandMonthYear(Connection connection, String month, String year) throws SQLException {
+        if (month.length() == 1) {
+            month = "0" + month;
+        }
+        String monthYear = "%/" + month + "/" + year + "%";
+        String query = "SELECT e.name, e.department, w.employee_id, SUM(w.shift1Hours + w.shift2Hours) AS workingTime, SUM(w.shift3Hours) AS overtime FROM WorkerAttendanceRecord w JOIN employee e ON w.employee_id = e.id WHERE w.date LIKE ? GROUP BY w.employee_id ORDER BY w.employee_id";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, monthYear);
+        return statement.executeQuery();
+    }
+
 }

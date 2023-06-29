@@ -1,4 +1,4 @@
-package itss.group14.timekeeper.controllers;
+package itss.group14.timekeeper.controllers.admin;
 
 import itss.group14.timekeeper.contrains.FXMLconstrains;
 import itss.group14.timekeeper.ultis.ViewChangeUltils;
@@ -61,5 +61,9 @@ public class AdminHomeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         welcomeText.setText("Xin chào " + name + "!");
 
+    }
+
+    public void logout(ActionEvent event) throws Exception {
+        viewChangeUltils.changeView(event, FXMLconstrains.loginFXML);
     }
 }
