@@ -1,6 +1,8 @@
 package itss.group14.timekeeper.controllers;
 
 import itss.group14.timekeeper.contrains.FXMLconstrains;
+import itss.group14.timekeeper.controllers.infomationFix.SuaThongTinOfficerController;
+import itss.group14.timekeeper.controllers.infomationFix.SuaThongTinWorkerController;
 import itss.group14.timekeeper.dbservices.EmployeeService;
 import itss.group14.timekeeper.dbservices.OfficerAttendanceRecordService;
 import itss.group14.timekeeper.dbservices.RequestService;

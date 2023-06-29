@@ -9,6 +9,13 @@ public class WorkerAttendanceRecord extends AttendanceRecord {
         super(employeeId, date);
     }
 
+    public WorkerAttendanceRecord(String workerId, double shift1Hours, double shift2Hours, double shift3Hours) {
+        super(workerId);
+        this.shiftHours1 = shift1Hours;
+        this.shiftHours2 = shift2Hours;
+        this.shiftHours3 = shift3Hours;
+    }
+
     public double getShiftHours1() {
         return shiftHours1;
     }

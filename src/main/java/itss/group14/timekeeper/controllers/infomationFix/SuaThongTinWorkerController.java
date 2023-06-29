@@ -1,4 +1,4 @@
-package itss.group14.timekeeper.controllers;
+package itss.group14.timekeeper.controllers.infomationFix;
 
 import itss.group14.timekeeper.contrains.FXMLconstrains;
 import itss.group14.timekeeper.dbservices.RequestService;

@@ -1,7 +1,5 @@
 package itss.group14.timekeeper.model.record;
 
-import java.sql.Time;
-
 public class AttendanceRecord {
 
     private String employeeId;
@@ -10,6 +8,10 @@ public class AttendanceRecord {
     public AttendanceRecord(String employeeId, String date) {
         this.employeeId = employeeId;
         this.date = date;
+    }
+
+    public AttendanceRecord(String employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getEmployeeId() {

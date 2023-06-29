@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-      fx:controller="itss.group14.timekeeper.controllers.SuaThongTinWorkerController">
+      fx:controller="itss.group14.timekeeper.controllers.infomationFix.SuaThongTinWorkerController">
     <children>
         <Button fx:id="sentButton" layoutX="519.0" layoutY="349.0" mnemonicParsing="false" onAction="#suaTT"
                 prefHeight="25.0" prefWidth="48.0" text="Sửa"/>

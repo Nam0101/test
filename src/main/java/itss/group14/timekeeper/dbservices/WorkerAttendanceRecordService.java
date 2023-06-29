@@ -34,4 +34,23 @@ public class WorkerAttendanceRecordService {
         statement.setString(5, workerAttendanceRecord.getDate());
         statement.executeUpdate();
     }
+
+    public static void insertWorkerAttendanceRecord(Connection connection, WorkerAttendanceRecord workerAttendanceRecord) throws SQLException {
+        String query = "INSERT INTO WorkerAttendanceRecord (employee_id, date, shift1Hours, shift2Hours, shift3Hours) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, workerAttendanceRecord.getEmployeeId());
+        statement.setString(2, workerAttendanceRecord.getDate());
+        statement.setDouble(3, workerAttendanceRecord.getShiftHours1());
+        statement.setDouble(4, workerAttendanceRecord.getShiftHours2());
+        statement.setDouble(5, workerAttendanceRecord.getShiftHours3());
+        statement.executeUpdate();
+    }
+
+    public static ResultSet getAllWorkerAttendanceRecordByMonthAndYear(Connection connection, String Month, String Year) throws SQLException {
+        String monthYear = "%" + Month + "/" + Year;
+        String query = "SELECT * FROM WorkerAttendanceRecord WHERE date LIKE ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, monthYear);
+        return statement.executeQuery();
+    }
 }

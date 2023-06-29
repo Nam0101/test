@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+      fx:controller="itss.group14.timekeeper.controllers.exportdata.ChoseO_WexportDataController"
+>
+   <children>
+      <Button layoutX="220.0" layoutY="112.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="160.0"
+              text="Công nhân" onAction="#handleWorker"/>
+      <Button layoutX="220.0" layoutY="200.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="160.0"
+              text="Nhân viên văn phòng" onAction="#handleOffice"/>
+      <Button fx:id="backButton" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" text="Back"
+              onAction="#handleBack"/>
+   </children>
+</Pane>

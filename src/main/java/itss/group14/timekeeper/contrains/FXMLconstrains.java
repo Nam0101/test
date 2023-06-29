@@ -8,5 +8,7 @@ public class FXMLconstrains {
     public static String suaTTWorker = "/itss/group14/timekeeper/suaTTWorker.fxml";
     public static String suaTTOfficer = "/itss/group14/timekeeper/suaTTOfficer.fxml";
     public static String importDataSelectFXML = "/itss/group14/timekeeper/importExcelData.fxml";
+    public static String W_or_OexportDataFXML = "/itss/group14/timekeeper/W_or_O.fxml";
+    public static String exportDataWorkerFXML = "/itss/group14/timekeeper/exportData_Worker.fxml";
 
 }

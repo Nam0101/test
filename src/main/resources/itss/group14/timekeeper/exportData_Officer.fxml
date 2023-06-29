@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1">
+   <children>
+      <TableView layoutX="12.0" layoutY="67.0" prefHeight="276.0" prefWidth="575.0">
+         <columns>
+            <TableColumn prefWidth="121.5999755859375" text="Họ và tên"/>
+            <TableColumn prefWidth="65.5999755859375" text="MNV"/>
+            <TableColumn prefWidth="89.5999755859375" text="Đơn vị"/>
+            <TableColumn prefWidth="47.20001220703125" text="Tháng"/>
+            <TableColumn prefWidth="78.4000244140625" text="TG làm"/>
+            <TableColumn prefWidth="81.5999755859375" text="TG đi muộn"/>
+            <TableColumn prefWidth="91.199951171875" text="TG về sớm"/>
+         </columns>
+      </TableView>
+      <Button layoutX="479.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" text="Excel"/>
+      <Button layoutX="534.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" text="CSV"/>
+      <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0"
+              text="Nhân viên văn phòng"/>
+      <Label layoutX="379.0" layoutY="38.0" prefHeight="25.0" prefWidth="48.0" text="Tháng"/>
+      <TextField layoutX="421.0" layoutY="38.0" prefHeight="25.0" prefWidth="31.0"/>
+      <TextField layoutX="494.0" layoutY="38.0" prefHeight="25.0" prefWidth="59.0"/>
+      <Label layoutX="466.0" layoutY="38.0" prefHeight="25.0" prefWidth="25.0" text="Năm"/>
+   </children>
+</Pane>
